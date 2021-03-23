@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<!--
+ Создайте список. Реализуйте кнопки со следу􏰈􏰄ющим функц􏰇ионалом позвол􏰁􏰈􏰄яющие изменя􏰁ть􏰃 DOM:
+ В􏰀ыбрать􏰃 первы􏰀й 􏰆элемент
+ Выбрать􏰃 последний э􏰆лемент
+ Вы􏰀брать􏰃 следующ􏰈􏰄ий э􏰆лемент 
+ Вы􏰀брать􏰃 преды􏰀дущ􏰄ий э􏰆лемент 
+ Добавить􏰃 э􏰆лемент
+ Удалит􏰃ь 􏰆элемент
+ Добавит􏰃ь в нач􏰅ало   
+-->
+    <script>
+        function getFirstElem(){
+            var list = document.getElementsByTagName("li"); 
+            for(var i = 0; i < list.length; i++){
+                if(i === 0){
+                    list[i].style.color = "red";
+                }else{
+                    list[i].style.color = "black";
+                }
+            }        
+        };
+        function getLastElem(){
+            var list = document.getElementsByTagName("li");
+            for(var i = 0; i < list.length; i++){
+                if(i === list.length - 1){
+                    list[i].style.color = "red";
+                }else{
+                    list[i].style.color = "black";
+                }
+            }   
+        };
+
+        function appendElem(){
+            var newItem = document.createElement("li");
+            newItem.innerHTML = "new_item";
+            document.getElementById("myUl").appendChild(newItem);
+        };
+        function deleteElem(){
+            var list = document.getElementById("myUl");
+            var delElem = list.lastChild;
+            list.removeChild(delElem);
+        };
+        function getBefore(){
+            var newItem = document.createElement("li");
+            newItem.innerHTML = "new_item";
+            var list = document.getElementById("myUl");
+            var firstElem = list.firstElementChild;
+            list.insertBefore(newItem, firstElem);
+       };
+    </script>
+    <ul id="myUl">
+       <li id="item1">item1</li>
+       <li>item2</li>
+       <li>item3</li>
+    </ul>
+    <form> 
+         
+         <input type="button" value="Выбрать первый элемент" onclick="getFirstElem()"><br>
+         <input type="button" value="Выбрать последний элемент" onclick="getLastElem()"><br>
+        <!-- 
+ <input type="button" value="Выбрать следующий элемент" onclick="getNextElem()"><br>
+         <input type="button" value="Выбрать предыдущий элемент" onclick="getPreviousElem()"><br>
+ -->
+         <input type="button" value="Добавить элемент" onclick="appendElem()"><br>
+         <input type="button" value="Удалить элемент" onclick="deleteElem()"><br>
+         <input type="button" value="Добавить в начало" onclick="getBefore()">
+</form>
+</body>
+</html>
