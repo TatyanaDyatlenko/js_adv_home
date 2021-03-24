@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+     <!-- Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
+обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->
+    <p id="demo"></p>
+    <button onclick="myTimeoutFunction()">start</button>
+    <button onclick="myStopFunction()">stop</button>
+    <button onclick="myContinueFunction()">continue</button>
+    <button onclick="startAgainFunction()">startAgain</button>
+     <script>
+         
+//------ код от 1 до 30------------
+         
+//         var myDemo = document.getElementById('demo');
+//         var count = 1;
+//         var myVar;
+//         var stopNumver;
+//         
+//         
+//         function myTimeoutFunction(){
+//            myDemo.innerHTML = count;
+//            count++;
+//             if(count <= 30){
+//                 myVar = setTimeout(myTimeoutFunction, 1000);
+//             }
+//         }
+//         
+//         function myStopFunction(){
+//             clearTimeout(myVar);
+//             stopNumver = myDemo.innerHTML; 
+//         }
+//         
+//         function myContinueFunction(){
+//             myDemo.innerHTML = stopNumver;
+//             stopNumver++;
+//             if(stopNumver <= 30){
+//                 myVar = setTimeout(myTimeoutFunction, 1000);
+//             }
+//         }
+//         
+//         function startAgainFunction(){
+//             clearTimeout(myVar);
+//             count = 1;
+//             myTimeoutFunction();
+//         }
+  //-------код от 30 до 1----------  
+         
+         var myDemo = document.getElementById('demo');
+         var count = 30;
+         var myVar;
+         var stopNumver;
+         
+         
+         function myTimeoutFunction(){
+            myDemo.innerHTML = count;
+            count--;
+             if(count >= 1){
+                 myVar = setTimeout(myTimeoutFunction, 1000);
+             }
+         }
+         
+         function myStopFunction(){
+             clearTimeout(myVar);
+             stopNumver = myDemo.innerHTML; 
+         }
+         
+         function myContinueFunction(){
+             myDemo.innerHTML = stopNumver;
+             stopNumver--;
+             if(stopNumver >= 1){
+                 myVar = setTimeout(myTimeoutFunction, 1000);
+             }
+         }
+         
+         function startAgainFunction(){
+             clearTimeout(myVar);
+             count = 30;
+             myTimeoutFunction();
+         }
+         
+    </script>
+</body>
+</html>
