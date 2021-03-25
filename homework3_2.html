@@ -1,0 +1,47 @@
+<!-- 
+    Запросите у пользователя ввести какую-то фразу. 
+    Отобразите каждое отдельное слово в виде списка ul li. 
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. 
+    Найдите все буквы "а" их количество в модальное окно. 
+ -->
+ 
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <input type="text">
+    <input type="button" value="Обработать" onclick="TextToList();"> 
+    <ul id="my-ul"></ul>     
+     <script>
+         var myUl = document.querySelector('#my-ul');
+         
+         
+         function TextToList(){
+             var text = document.querySelector('[type="text"]').value;
+             var patt = /\s+/;
+             var textArray = text.split(patt);
+             console.log(textArray);
+             for(i = 0; i < textArray.length; i++){
+                 textArray[0] = textArray[0].toUpperCase();
+                 textArray[textArray.length - 1] = textArray[textArray.length - 1].toLowerCase();
+                 textArray[textArray.length - 2] = textArray[textArray.length - 2].toLowerCase();
+             }
+             for(i = 0; i < textArray.length; i++){
+                 myUl.insertAdjacentHTML('beforeend', '<li>'+textArray[i]+'</li>');
+             }
+             var patt2 = /a/gi;
+             var resultReg = text.match(patt2);
+             console.log(resultReg);
+             if(resultReg === null) {
+                 alert('Нужной вам буквы в данном тексте нет');
+             }else{
+                alert('Количество букв "a" в данном тексте: ' + resultReg.length);
+             }
+         }
+         
+    </script>   
+</body>
+</html>
