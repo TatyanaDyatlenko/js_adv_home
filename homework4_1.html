@@ -1,0 +1,29 @@
+<!-- Напишите регулярные выражения, которые будут выбирать 
+    индекс - 55535 - 5 numbers
+    ip адресс, пример 255.255.255.255
+    цены в долларах - $0.84, $1232.84, $4
+    дата в виде - 30/12/2016 - день, месяц, год
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Document</title>
+ </head>
+ <body>
+     Lorem ipsum dolor sit amet  55555 consectetur adipisicing elit. Fuga deserunt 48961 rerum atque vero soluta error illo, mollitia hic necessitatibus harum 33125 ipsam veniam! Placeat cumque tempore voluptatibus velit quo quasi dolores.
+ 	<script type="text/javascript">
+        
+        var pattern1 = /\d{5}/;
+        console.log(pattern1.test('55535'));
+        var pattern2 = /^(([0-1]?[0-9]?[0-9]{1})|(2?[0-4]?[0-9]{1})|(25[0-5]))\.(([0-1]?[0-9]?[0-9]{1})|(2?[0-4]?[0-9]{1})|(25[0-5]))\.(([0-1]?[0-9]?[0-9]{1})|(2?[0-4]?[0-9]{1})|(25[0-5]))\.(([0-1]?[0-9]?[0-9]{1})|(2?[0-4]?[0-9]{1})|(25[0-5]))$/;
+        console.log(pattern2.test('255.255.255.255'));
+        var pattern3 = /^\$\d+\.?[0-9]?[0-9]?$/;
+        console.log(pattern3.test('$1232.84'));
+        var pattern4 = /\d{1,2}\/\d{1,2}\/\d{4}/;
+        console.log(pattern4.test('30/12/2016'));
+        
+        
+ 	</script>
+ </body>
+ </html>
