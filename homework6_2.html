@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+	<title>HomeWork</title>
+	<style>
+        #my-div {
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+            left: 50px;
+            top: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+   <div id="my-div"></div>
+    <!-- 
+	1. drag and drop;
+	-->
+	
+    <script>
+        window.onload = function(){
+            var myDiv = document.getElementById('my-div');
+            myDiv.addEventListener('mousedown', mouseDown);
+            myDiv.addEventListener('mouseup', mouseUp);
+            document.addEventListener('mousemove', mouseMove);
+           
+             function mouseDown(e){
+                myDiv.style.position = 'absolute';
+                myDiv.style.zIndex = 1000; 
+//                myDiv.style.left = e.pageX - myDiv.offsetWidth / 2 + 'px';
+//                myDiv.style.top = e.pageY - myDiv.offsetHeight / 2 + 'px';
+                
+            };
+            function mouseUp(){
+                myDiv.style.left = myDiv.getBoundingClientRect().left;
+                myDiv.style.top = myDiv.getBoundingClientRect().top;
+                myDiv.removeEventListener('mousedown', mouseDown);
+                document.removeEventListener('mousemove', mouseMove);
+            };
+            function mouseMove(e){
+                myDiv.style.left = e.pageX - myDiv.offsetWidth / 2 + 'px';
+                myDiv.style.top = e.pageY - myDiv.offsetHeight / 2 + 'px';
+            };
+        }
+    </script>
+</body>
+</html>

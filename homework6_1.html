@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+	<title>HomeWork</title>
+	<style>
+        * {
+            margin: 0px;
+        }
+        #demo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: aqua;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
+	-->
+	<div class="container">
+	    <div id="demo"></div>
+        <br>
+        <button>Stop</button>
+	</div>
+	
+	<script>
+        window.onload = function(){
+            var container = document.querySelector('.container');
+            var myDiv = document.getElementById('demo');
+            var btn = document.querySelector('button');
+            var contWidth = container.getBoundingClientRect().width;
+            var leftOffset = 0;
+            var timeout;
+            
+            myDiv.addEventListener('click', divClickHandler);
+            btn.addEventListener('click', btnClickHandler);
+            
+        
+            function divClickHandler(){
+                leftOffset = leftOffset + 5;
+                myDiv.style.left = leftOffset + 'px';
+                if(leftOffset > (contWidth - 100)){
+                    leftOffset = 0;
+                }
+                timeout = setTimeout(divClickHandler, 30);
+            };
+            
+            function btnClickHandler(){
+                clearTimeout(timeout);
+            }
+        }
+    </script>
+    
+</body>
+</html>
