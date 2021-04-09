@@ -1,0 +1,59 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    
+</head>
+<body>
+    <script>
+        // наследование
+        function Man(walk, eat, drink){
+            this.walk = walk;
+            this.eat = eat;
+            this.drink = drink;
+        };
+        function Doctor(cure){
+            this.cure = cure;
+        };
+        function Soldier(shoot){
+            this.shoot = shoot;
+        };
+        Doctor.prototype = new Man('slowly', 'bread', 'milk');
+        Soldier.prototype = new Man('quick', 'meat', 'water');
+        
+        var doctorO = new Doctor('operation');
+        var soldierO = new Soldier('true');
+        
+        console.log(doctorO);
+        console.log(soldierO);
+        
+        // полиморфизм
+        function Person(cure){
+            this.cure = cure;
+        };
+        function Doctor(walk, eat, drink){
+            this.walk = walk;
+            this.eat = eat;
+            this.drink = drink;
+        };
+        Doctor.prototype = new Person('good');
+        
+        function Dentist(cure){
+            this.cure = cure;
+        };
+        function Surgeon(cure){
+            this.cure = cure;
+        };
+        Dentist.prototype = new Doctor('slowly', 'bread', 'milk');
+        Surgeon.prototype = new Doctor('quick', 'meat', 'water');
+        
+        var den = new Dentist('treat teeth');
+        var mike = new Surgeon('perform operations');
+        console.log(den);
+        console.log(mike);
+    
+    </script>
+</body>
+</html>
