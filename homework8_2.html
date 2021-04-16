@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <span></span>
+    <br>
+    <input type="button" value="Выход">
+     
+    <script>
+        window.onload = function(){
+            
+            var mySpan = document.querySelector('span');
+            var myInput = document.querySelector('input');
+            var login;
+            myInput.addEventListener('click', exitInput);
+            
+            showLogin();
+            
+            function showLogin(){
+                login = prompt('Введите логин:','');
+                setStorage();
+                getStorage();
+            }
+            function setStorage() {
+                window.localStorage.setItem('user', login);
+            }
+            
+            function getStorage(){
+                var pattern = /[Aa]dmin/;
+                if(pattern.test(window.localStorage.getItem('user'))){
+                    mySpan.innerHTML = 'Пользователь ' + window.localStorage.getItem('user') + ' вошел в систему';
+                }else{
+                    myInput.style.display = 'none';
+                    mySpan.innerHTML = '';
+                    alert('Вы не admin');
+                }                
+            }
+            
+            
+            function exitInput(){
+                mySpan.innerHTML = '';
+                myInput.style.display = 'none';
+                showLogin();
+            }
+        }
+    </script>
+
+    <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+</body>
+</html>
